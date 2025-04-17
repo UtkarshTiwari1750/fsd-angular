@@ -8,9 +8,8 @@ describe('PaymentFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PaymentFormComponent]
-    })
-    .compileComponents();
+      imports: [PaymentFormComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PaymentFormComponent);
     component = fixture.componentInstance;

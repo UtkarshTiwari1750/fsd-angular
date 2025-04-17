@@ -21,11 +21,20 @@ export class PaymentFormComponent {
   };
 
   response: any;
+  errorMessage: string = '';
 
   constructor(private paymentService: PaymentService) {}
 
   submitPayment() {
     console.log(this.payment);
+    if (!this.payment.userId || this.payment.userId <= 0) {
+      this.errorMessage = 'Invalid User ID. Please enter a positive number.';
+      return;
+    }
+    if (!this.payment.amount || this.payment.amount <= 0) {
+      this.errorMessage = 'Invalid Amount. Please enter a valid amount.';
+      return;
+    }
     this.paymentService
       .submitPayment(this.payment.userId, this.payment)
       .subscribe({
@@ -40,7 +49,15 @@ export class PaymentFormComponent {
             tStamp: new Date().toISOString(),
           };
         },
-        error: (err) => console.error('Error submitting payment:', err),
+        error: (err) => {
+          if (err.status === 404) {
+            this.errorMessage = 'User not found.';
+          } else if (err.status === 400) {
+            this.errorMessage = 'Invalid payment data.';
+          } else {
+            this.errorMessage = 'An unexpected error occurred.';
+          }
+        },
       });
   }
 }

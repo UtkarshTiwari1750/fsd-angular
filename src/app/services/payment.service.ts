@@ -14,7 +14,7 @@ export class PaymentService {
     return this.http.post(`${this.baseUrl}/add/${userId}`, data);
   }
 
-  getAllPayments(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/get`);
-  }
+  // getAllPayments(): Observable<any[]> {
+  //   return this.http.get<any[]>(`${this.baseUrl}/get`);
+  // }
 }
