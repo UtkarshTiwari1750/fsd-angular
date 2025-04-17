@@ -1,0 +1,37 @@
+<div class="form-container">
+  <h2>Make a Payment</h2>
+  <form (ngSubmit)="submitPayment()">
+    <label>User ID:</label>
+    <input type="number" [(ngModel)]="payment.userId" name="userId" required />
+    <!--
+  <label>Account No:</label>
+  <input type="text" [(ngModel)]="payment.accNo" name="accNo" required /> -->
+
+    <label>Amount:</label>
+    <input type="number" [(ngModel)]="payment.amount" name="amount" required />
+
+    <label>Payment Method:</label>
+    <select [(ngModel)]="payment.paymentMethod" name="paymentMethod">
+      <option value="Card">Card</option>
+      <option value="Cash">Cash</option>
+      <option value="Net Banking">Net Banking</option>
+    </select>
+
+    <label>transactionId:</label>
+    <input
+      type="text"
+      [(ngModel)]="payment.transactionId"
+      name="transactionId"
+    />
+    <!--
+  <label>Bank Name:</label>
+  <input type="text" [(ngModel)]="payment.bankName" name="bankName" required /> -->
+
+    <button type="submit">Submit Payment</button>
+  </form>
+
+  <div *ngIf="response">
+    <h3>Payment Successful</h3>
+    <p>{{ response | json }}</p>
+  </div>
+</div>
