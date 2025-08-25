@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class PaymentService {
-  private baseUrl = 'https://fsd-springboot-axh8.onrender.com/payment';
+  private baseUrl = 'http://localhost:8080/payment';
 
   constructor(private http: HttpClient) {}
 
